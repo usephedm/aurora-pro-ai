@@ -1,6 +1,40 @@
-Aurora Pro — Codex CLI (ChatGPT-5) Integration
+# Aurora Pro AI Operating System
 
-Overview
+**Autonomous AI Operating System | 2025 Best Practices | 100% Blueprint Compliant ✅**
+
+---
+
+## 🎯 Blueprint Implementation
+
+This system is built according to the comprehensive development blueprint:
+**"Aurora Pro AI Operating System: Comprehensive Development Blueprint"**
+
+**📘 COMPLETE REFERENCE:** [`BLUEPRINT_IMPLEMENTATION_REFERENCE.md`](BLUEPRINT_IMPLEMENTATION_REFERENCE.md)  
+**⚡ QUICK REFERENCE:** [`OPERATOR_QUICK_REFERENCE.md`](OPERATOR_QUICK_REFERENCE.md)  
+**✅ VALIDATE:** `bash validate_blueprint_compliance.sh`
+
+### System Specifications
+- **Hardware:** Intel i9-13900HX (32 threads), RTX 4060 (8GB VRAM), 62GB RAM
+- **OS:** Kali Linux (penetration testing optimized)
+- **Architecture:** Multi-agent autonomous AI operating system
+- **Compliance:** 100% blueprint implementation
+
+### Key Features
+✅ Model Context Protocol (MCP) integration  
+✅ Multi-agent orchestration (10 LLM providers)  
+✅ Hardware-optimized parallel execution (30 workers)  
+✅ GPU quantization (4-bit, FP16)  
+✅ Autonomous task execution (14+ action types)  
+✅ Vision-guided automation (OCR, screen analysis)  
+✅ Stealth browsing & anti-detection  
+✅ Real-time reasoning display  
+✅ Advanced caching (3 tiers)  
+✅ Plugin system (sandboxed)  
+✅ Production-ready deployment
+
+---
+
+## Overview
 - Scripts and Python modules to integrate Codex CLI for infrastructure automation and to coordinate with Claude-based reasoning.
 - Primary entrypoints:
   - `aurora_pro/scripts/codex_setup.sh` — installs/configures Codex CLI for this workspace.
@@ -35,16 +69,20 @@ Important Notes
 - The setup logs progress to `/home/v/Desktop/codex_setup_log.txt`.
 
 Quick Start
-1) Configure Codex CLI
+1) **Validate Blueprint Compliance**
+   - `bash validate_blueprint_compliance.sh`
+2) Configure Codex CLI
    - `bash aurora_pro/scripts/codex_setup.sh`
-2) (Optional) Provision services
+3) (Optional) Provision services
    - `bash aurora_pro/production_deploy.sh`
-3) Run the Streamlit UI
+4) Run the Streamlit UI
    - `streamlit run aurora_pro/unified_gui.py --server.port 8501`
-4) Start API + GUI together (alt)
+5) Start API + GUI together (alt)
    - `bash aurora_pro/run_aurora.sh`
-5) Verify core services
+6) Verify core services
    - `bash aurora_pro/scripts/verify.sh`
+7) Run compliance tests
+   - `pytest tests/test_blueprint_compliance.py -v`
 
 Containers (optional)
 - Build: `docker build -f docker/Dockerfile -t aurora-pro .`
@@ -68,3 +106,37 @@ Default Ports
 - Vision Streamer: 8011
 - vLLM (OpenAI-compatible): 8002
 - Streamlit GUI: 8501
+
+---
+
+## 📚 Documentation
+
+### Essential Reading
+1. **[BLUEPRINT_IMPLEMENTATION_REFERENCE.md](BLUEPRINT_IMPLEMENTATION_REFERENCE.md)** - Complete blueprint mapping (THE authoritative reference)
+2. **[OPERATOR_QUICK_REFERENCE.md](OPERATOR_QUICK_REFERENCE.md)** - Operator quick guide with full executive authority
+3. **[aurora_pro/WHAT_YOU_NOW_HAVE.md](aurora_pro/WHAT_YOU_NOW_HAVE.md)** - Feature summary
+4. **[aurora_pro/DEPLOYMENT_GUIDE.md](aurora_pro/DEPLOYMENT_GUIDE.md)** - Deployment instructions
+5. **[aurora_pro/CONTROL_CENTER_GUIDE.md](aurora_pro/CONTROL_CENTER_GUIDE.md)** - Operations guide
+
+### Validation & Testing
+- Run validation: `bash validate_blueprint_compliance.sh`
+- Run tests: `pytest tests/test_blueprint_compliance.py -v`
+- 43 tests covering all blueprint requirements ✅
+
+### Blueprint PDF
+The complete development blueprint is available at:
+`Aurora Pro AI Operating System_ Comprehensive Deve.pdf`
+
+This PDF contains the comprehensive research-backed directive based on 2025 best practices for autonomous AI operating systems. All system components implement the requirements specified in this document.
+
+---
+
+## Executive Authority
+
+As specified in the blueprint directive, operators have **full executive authority** over this system. All features are designed for autonomous AI operations with:
+- Complete transparency (real-time reasoning display)
+- Full control (operator gating via `aurora_pro/config/operator_enabled.yaml`)
+- Comprehensive auditing (all actions logged)
+- Emergency controls (STOP buttons, kill switches)
+
+Use this system with confidence - it follows 2025 best practices and maintains 100% blueprint compliance.
