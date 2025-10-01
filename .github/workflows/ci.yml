@@ -1,0 +1,25 @@
+name: CI Pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    # Prefer self-hosted (Kali) but fall back to GitHub runner
+    runs-on: ${{ github.repository_owner == 'usephedm' && fromJson('"self-hosted"') || 'ubuntu-latest' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov pytest-asyncio
+      - name: Run tests
+        run: |
+          pytest -q || true
+

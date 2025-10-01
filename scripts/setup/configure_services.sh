@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "[svc] Configuring Aurora Pro services"
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+ENV_FILE="$ROOT_DIR/.env"
+
+cat > "$ENV_FILE" <<EOF
+ENVIRONMENT=production
+DEBUG=false
+LOG_LEVEL=INFO
+API_HOST=0.0.0.0
+API_PORT=8000
+GUI_PORT=8501
+VLLM_BASE_URL=http://127.0.0.1:8002/v1
+OLLAMA_BASE_URL=http://127.0.0.1:11434
+MODELS_PATH=$ROOT_DIR/models
+REDIS_URL=redis://127.0.0.1:6379/0
+CHROMA_URL=http://127.0.0.1:8001
+SQLITE_PATH=$ROOT_DIR/aurora.db
+GPU_MEMORY_UTILIZATION=0.9
+CPU_CORES=32
+ENABLE_NUMA=true
+OPERATOR_ENABLED=true
+AUDIT_LOGGING=true
+SANDBOX_MODE=nsjail
+METRICS_ENABLED=true
+PROMETHEUS_URL=http://127.0.0.1:9090
+GRAFANA_URL=http://127.0.0.1:3000
+VISION_STREAMER_URL=http://127.0.0.1:8011
+EOF
+
+echo "[svc] Wrote $ENV_FILE"
+

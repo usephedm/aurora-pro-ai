@@ -1,0 +1,6 @@
+proxies:
+- city: New York
+  country: US
+  provider: example_provider
+  proxy_id: example_proxy_1
+  url: http://proxy.example.com:8080

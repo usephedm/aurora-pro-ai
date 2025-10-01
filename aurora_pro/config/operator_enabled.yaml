@@ -1,0 +1,24 @@
+operator_enabled: true
+
+features:
+  autonomous_browsing: true
+  web_summarization: true
+  auto_dependency_install: true
+  mcp_extensions: true
+  self_evolving_toolchain: true
+  internet_access: true
+  control_mouse_keyboard: false  # Needs X11
+  vision_agent: true  # Needs X11
+  vision_streaming: false # Enable/disable real-time vision streaming
+  stealth_browsing: true
+  captcha_bypass: false  # Needs API key
+  plugin_system: true
+  local_inference: true
+  proxy_rotation: false  # Needs real proxies
+  multi_core_processing: true
+  advanced_caching: true
+
+operator:
+  authorized_by: 'System Administrator'
+  authorization_date: '2025-09-30'
+  notes: 'Production deployment - all real services enabled'

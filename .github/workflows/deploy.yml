@@ -1,0 +1,31 @@
+name: Deploy to Kali
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Pull latest code
+        run: |
+          set -euo pipefail
+          cd /opt/aurora-pro || mkdir -p /opt/aurora-pro && cd /opt/aurora-pro
+          if [ -d .git ]; then
+            git fetch --all
+            git checkout -f main || true
+            git reset --hard origin/main
+          else
+            git clone https://github.com/${{ github.repository }} /opt/aurora-pro
+          fi
+      - name: Restart services
+        run: |
+          set -euo pipefail
+          systemctl restart redis-server || true
+          systemctl restart aurora-pro-api || true
+      - name: Health check
+        run: |
+          set -euo pipefail
+          curl -fsS http://localhost:8000/health
+

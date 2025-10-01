@@ -1,0 +1,10 @@
+models:
+  hermes_3_8b:
+    id: NousResearch/Hermes-3-Llama-3.1-8B
+    path: /models/fp16/Hermes-3-8B
+  qwen_2_5_7b:
+    id: Qwen/Qwen2.5-7B-Instruct
+    path: /models/fp16/Qwen2.5-7B-Instruct
+  deepseek_r1_7b:
+    id: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+    path: /models/fp16/DeepSeek-R1-7B

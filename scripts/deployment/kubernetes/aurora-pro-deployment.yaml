@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aurora-pro-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aurora-pro-api
+  template:
+    metadata:
+      labels:
+        app: aurora-pro-api
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/OWNER/REPO:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: REDIS_URL
+              value: redis://redis:6379
+            - name: CHROMA_URL
+              value: http://chromadb:8001
+

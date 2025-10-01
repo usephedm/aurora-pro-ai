@@ -1,0 +1,12 @@
+{
+  "approval_mode": "auto",
+  "auto_commit": true,
+  "branch_protection": {
+    "require_pr": true,
+    "require_reviews": 2
+  },
+  "memory_persistence": true,
+  "model": "gpt-4-turbo",
+  "tool_access": ["file", "network", "shell"],
+  "working_directory": "."
+}

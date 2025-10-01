@@ -1,0 +1,8 @@
+{
+  "approval_mode": "auto",
+  "memory_persistence": true,
+  "model": "gpt-5-codex",
+  "reasoning_effort": "high",
+  "tool_access": ["file", "network", "shell"],
+  "working_directory": "."
+}

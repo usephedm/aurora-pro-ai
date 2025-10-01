@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest an idea for Aurora Pro
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      description: Describe the feature you'd like.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Rationale
+      description: Why is this feature important?
+  - type: textarea
+    attributes:
+      label: Alternatives considered
+  - type: textarea
+    attributes:
+      label: Additional context
+

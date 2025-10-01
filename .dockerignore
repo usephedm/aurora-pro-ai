@@ -1,0 +1,16 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.gitignore
+.vscode/
+logs/
+models/
+.codex/
+node_modules/
+*.log
+aurora.db
+

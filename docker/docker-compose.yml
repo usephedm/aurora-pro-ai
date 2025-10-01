@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  aurora-api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - CHROMA_URL=http://chromadb:8001
+      - VLLM_BASE_URL=http://vllm-server:8000/v1
+    volumes:
+      - ../models:/models
+      - ../logs:/app/logs
+    depends_on:
+      - redis
+      - chromadb
+
+  aurora-gui:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    command: streamlit run aurora_pro/aurora_gui.py --server.port 8501 --server.address 0.0.0.0 --server.headless true
+    ports:
+      - "8501:8501"
+    depends_on:
+      - aurora-api
+
+  vllm-server:
+    image: vllm/vllm-openai:latest
+    ports:
+      - "8002:8000"
+    volumes:
+      - ../models:/models
+    command: >
+      --model /models/fp16/Qwen2.5-7B-Instruct
+      --gpu-memory-utilization 0.9
+      --trust-remote-code
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --maxmemory 14gb --maxmemory-policy allkeys-lru
+
+  chromadb:
+    image: ghcr.io/chroma-core/chroma:latest
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+volumes:
+  chroma_data:
+  grafana_data:

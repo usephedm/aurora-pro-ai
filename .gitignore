@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Env & secrets
+.env
+*.env
+
+# Data & logs
+logs/
+*.log
+aurora.db
+*.sqlite*
+
+# Models & cache
+models/
+.cache/
+
+# Codex logs
+.codex/
+
+# Node
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+
