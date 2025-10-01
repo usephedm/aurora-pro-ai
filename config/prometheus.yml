@@ -1,0 +1,16 @@
+# Prometheus Configuration
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'aurora-monitor'
+
+scrape_configs:
+  - job_name: 'aurora-api'
+    static_configs:
+      - targets: ['api:8000']
+    metrics_path: '/metrics'
+    
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
