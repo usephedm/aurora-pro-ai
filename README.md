@@ -12,6 +12,13 @@ CI/CD & Containers
 - GitHub Actions workflows live under `.github/workflows/` (CI/CD, CodeQL, release, docker publish).
 - Container assets are under `docker/` (Dockerfiles, compose) and `scripts/deployment/`.
 
+MCP Integration
+- Minimal MCP server is provided at `aurora_pro/mcp_server.py` exposing tools:
+  - `health` (Aurora API), `vllm_models`, `gui_health`, `http_get`, and `shell_run` (operator-gated)
+- Run: `bash scripts/mcp/run_aurora_mcp.sh`
+- Environment:
+  - `AURORA_MCP_ALLOW_SHELL` (default true), `AURORA_API_BASE`, `VLLM_BASE_URL`, `AURORA_GUI_BASE`
+
 Config
 - `codex-config.json` stores lightweight Codex CLI permissions and runtime flags. The setup script copies this to `.codex/config.json`.
   Top-level keys are alphabetized; extend this file rather than hard-coding in scripts.
@@ -42,6 +49,19 @@ Quick Start
 Containers (optional)
 - Build: `docker build -f docker/Dockerfile -t aurora-pro .`
 - Compose: `docker compose -f docker/docker-compose.yml up -d`
+
+GitHub Initialization
+- Create/push repo: set env and run helper
+  - `export OWNER=usephedm REPO=aurora-pro-ai GITHUB_TOKEN=<token>`
+  - `cd /root/aurora-pro-ai && scripts/github/create_repo_and_push.sh`
+
+Secrets Setup
+- Import all secrets from a KEY=VALUE file (local desktop) into OS keyring and write .env placeholders:
+  - `FILE=/home/v/Desktop/credz.md scripts/setup/import_local_secrets.sh`
+- Interactive wizard to prompt for any missing required secrets defined in `configs/required_secrets.yaml`:
+  - `python3 scripts/setup/secret_wizard.py`
+- Push secrets to GitHub (CI/CD):
+  - `OWNER=usephedm REPO=aurora-pro-ai FILE=/home/v/Desktop/credz.md scripts/github/import_secrets_from_file.sh`
 
 Default Ports
 - API (FastAPI): 8000
